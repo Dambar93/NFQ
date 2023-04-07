@@ -1,37 +1,15 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form 'foundation_5_layout.html.twig' %}
 {% block main %}
-    <main>
-        <div class="py-5 bg-light">
-            <div class="container">
-                <div class="py-5 text-center">
-                    <p class="text-muted">Edited X minutes</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Title</strong>
-                        <input type="text" name="title" value="{{ article.title }}">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Image URL:</strong>
-                        <input type="text" name="title" value="{{ article.image }}">
-                    </div>
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3>
-                    <div class="form-group">
-                        <strong>Text:</strong>
-                        <textarea id="w3review" name="text" rows="4" cols="50">
-                            {{ article.text}}
-                        </textarea>
-                    </div>
-                </div>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="{{ path('home') }}" type="button" class="btn btn-secondary btn-lg px-4 gap-3">Back</a>
-                    <a href="{{ path('home') }}" type="button" class="btn btn-secondary btn-lg px-4 gap-3">Update</a>
-                </div>
-            </div>
-        </div>
-    </main>
+    {{ form_start(form) }}
+        {{form_row(form)}}
+        <button type= 'submit'>
+            Update
+        </button>
+    {{ form_end(form) }}
+  
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{{ path('home') }}" type="button" class="btn btn-secondary btn-lg px-4 gap-3">Back</a>
+
+    </div>
 {% endblock %}

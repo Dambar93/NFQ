@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+
 class Article
 {
     #[ORM\Id]
@@ -22,6 +24,11 @@ class Article
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private \DateTime $updated_at;
+
+    private $created;
 
     /**
      * @return int|null
@@ -78,4 +85,16 @@ class Article
     {
         $this->image = $image;
     }
+
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTime $updated_at): void
+    {
+        $this->updated_at = $updated_at;
+    }
+
+
 }

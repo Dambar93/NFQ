@@ -16,7 +16,8 @@ class AppFixtures extends Fixture
             $article->setTitle($articleData['name']);
             $article->setImage($articleData['img']);
             $article->setText($articleData['text']);
-
+            $article->setUpdatedAt(new \DateTime());
+            
             $manager->persist($article);
         }
 
