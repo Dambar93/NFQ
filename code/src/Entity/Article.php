@@ -96,5 +96,4 @@ class Article
         $this->updated_at = $updated_at;
     }
 
-
 }

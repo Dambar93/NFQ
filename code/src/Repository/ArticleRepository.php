@@ -18,5 +18,22 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->findBy(array(), array('updated_at' => 'DESC'));
     }
 
+    public static function readTime($text)
+    {
+        $counter = 0;
+        $words = explode(' ', $text);
+        $filterWords = str_replace(array(',','.','?'), '', $words);
+        $filteredWords = str_replace(array('-'), ' ', $filterWords);
+
+        foreach($filteredWords as $word){
+            if(strlen($word) > 3){
+                $counter++;
+            }
+        }
+        $time = str_replace(':', ' min. ', gmdate("i:s", $counter/200*60));
+        
+        return $time;
+    }
+
     
 }
