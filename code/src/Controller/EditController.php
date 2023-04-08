@@ -17,12 +17,12 @@ class EditController extends AbstractController
     public function edit(EntityManagerInterface $entityManager, int $id, Request $request): Response
     {
         $article = $entityManager->getRepository(Article::class)->find($id);
-        
+
         $form = $this-> createForm(ArticleFormType::class, $article);
-        $form-> handleRequest($request); 
-        
+        $form-> handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $article->setTitle($form->get('title')->getData());
             $article->setText($form->get('text')->getData());
             $article->setImage($form->get('image')->getData());

@@ -15,9 +15,8 @@ class IndexController extends AbstractController
     {
         $array= array();
         $articles = $articleRepository->findAll();
-        
-        foreach($articles as $article)
-        {
+
+        foreach($articles as $article) {
             $time = $articleRepository->readTime($article->getText());
             array_push($array, $time);
         }
